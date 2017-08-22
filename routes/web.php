@@ -15,6 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Routes - Todos os Usuários
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Routes - Todos os Usuários Logados
+Route::middleware(['auth'])->prefix('painel')->group(function(){
+  Route::get('/', function () {
+      return view('admin.painel');
+  });
+
+  //Routes - Todos os Usuários de level:0
+  Route::middleware(['level:0'])->group(function () {
+  });
+  //Routes - Todos os Usuários de level:1
+  Route::middleware(['level:1'])->group(function () {
+  });
+});
