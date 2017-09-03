@@ -69,6 +69,7 @@
           <div class="col-md-3">
             <ul class="list-group">
               <li class="list-group-item"><h4 class="text-center">Menu</h4></li>
+              <li class="list-group-item"><a href="{!! url('painel/adicionar-tema') !!}">Criar Tema</a></li>
               @if(Auth::user()->level>=0)
                 <li class="list-group-item"><a href="#">Meus Temas</a></li>
               @endif

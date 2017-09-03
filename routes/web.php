@@ -25,6 +25,9 @@ Route::middleware(['auth'])->prefix('painel')->group(function(){
       return view('admin.painel');
   });
 
+  Route::get('adicionar-tema','Admin\TemaController@create');
+  Route::post('adicionar-tema','Admin\TemaController@store');
+
   //Routes - Todos os Usuários de level:0
   Route::middleware(['level:0'])->group(function () {
   });
