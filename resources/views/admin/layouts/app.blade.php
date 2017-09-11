@@ -71,11 +71,11 @@
               <li class="list-group-item"><h4 class="text-center">Menu</h4></li>
               <li class="list-group-item"><a href="{!! url('painel/adicionar-tema') !!}">Criar Tema</a></li>
               @if(Auth::user()->level>=0)
-                <li class="list-group-item"><a href="#">Meus Temas</a></li>
+                <li class="list-group-item"><a href="{!! url('painel/meus-temas') !!}">Meus Temas</a></li>
               @endif
 
               @if(Auth::user()->level>=1)
-                <li class="list-group-item"><a href="#">Listar Temas</a></li>
+                <li class="list-group-item"><a href="{!! url('painel/listar-temas') !!}">Listar Temas</a></li>
               @endif
             </ul>
           </div>

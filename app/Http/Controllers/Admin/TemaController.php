@@ -12,6 +12,18 @@ use App\Opcoes;
 
 class TemaController extends Controller
 {
+  public function listar_por_usuario()
+  {
+    $temas = Temas::where('user_id','=',Auth::user()->id)->orderBy('created_at','desc')->get();
+    return view('admin.tema.index')->with('temas',$temas)->with('titulo','Meus Temas');
+  }
+
+  public function listar_temas()
+  {
+    $temas = Temas::orderBy('created_at','desc')->get();
+    return view('admin.tema.index')->with('temas',$temas)->with('titulo','Listar Temas');
+  }
+
   public function create()
   {
     return view('admin.tema.create');
@@ -41,5 +53,11 @@ class TemaController extends Controller
     $procurar =   ['ã','â','ê','é','í','õ','ô','ú',' ','?'];
     $substituir = ['a','a','e','e','i','o','o','u','-',''];
     return str_replace($procurar,$substituir,mb_strtolower($titulo));
+  }
+
+  public function destroy($id)
+  {
+    Temas::find($id)->delete();
+    return back();
   }
 }

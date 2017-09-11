@@ -28,10 +28,15 @@ Route::middleware(['auth'])->prefix('painel')->group(function(){
   Route::get('adicionar-tema','Admin\TemaController@create');
   Route::post('adicionar-tema','Admin\TemaController@store');
 
+  Route::get('meus-temas','Admin\TemaController@listar_por_usuario');
+
+  Route::get('deletar-tema/{id}','Admin\TemaController@destroy');
+
   //Routes - Todos os Usuários de level:0
   Route::middleware(['level:0'])->group(function () {
   });
   //Routes - Todos os Usuários de level:1
   Route::middleware(['level:1'])->group(function () {
+    Route::get('listar-temas','Admin\TemaController@listar_temas');
   });
 });
