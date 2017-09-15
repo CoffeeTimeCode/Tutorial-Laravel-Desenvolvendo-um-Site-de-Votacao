@@ -25,7 +25,11 @@
           <td>{!! $value->titulo !!}</td>
           <td>{!! $value->created_at !!}</td>
           <td>
-            <a href="{!! url('painel/deletar-tema/'.$value->id) !!}" class="btn btn-xs btn-danger">Deletar</a>
+            @if($titulo!="Listar Removidos")
+              <a href="{!! url('painel/deletar-tema/'.$value->id) !!}" class="btn btn-xs btn-danger">Deletar</a>
+            @else
+              <a href="{!! url('painel/ativar-tema/'.$value->id) !!}" class="btn btn-xs btn-warning">Ativar</a>
+            @endif
           </td>
         </tr>
         <?php endforeach; ?>

@@ -76,6 +76,7 @@
 
               @if(Auth::user()->level>=1)
                 <li class="list-group-item"><a href="{!! url('painel/listar-temas') !!}">Listar Temas</a></li>
+                <li class="list-group-item"><a href="{!! url('painel/listar-removidos') !!}">Listar Removidos</a></li>
               @endif
             </ul>
           </div>

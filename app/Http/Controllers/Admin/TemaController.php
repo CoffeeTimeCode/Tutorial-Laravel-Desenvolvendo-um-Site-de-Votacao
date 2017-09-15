@@ -24,6 +24,12 @@ class TemaController extends Controller
     return view('admin.tema.index')->with('temas',$temas)->with('titulo','Listar Temas');
   }
 
+  public function listar_removidos()
+  {
+    $temas = Temas::onlyTrashed()->orderBy('deleted_at','desc')->get();
+    return view('admin.tema.index')->with('temas',$temas)->with('titulo','Listar Removidos');
+  }
+
   public function create()
   {
     return view('admin.tema.create');
@@ -58,6 +64,12 @@ class TemaController extends Controller
   public function destroy($id)
   {
     Temas::find($id)->delete();
+    return back();
+  }
+
+  public function ativar($id)
+  {
+    Temas::withTrashed()->find($id)->restore();
     return back();
   }
 }

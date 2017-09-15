@@ -38,5 +38,8 @@ Route::middleware(['auth'])->prefix('painel')->group(function(){
   //Routes - Todos os Usuários de level:1
   Route::middleware(['level:1'])->group(function () {
     Route::get('listar-temas','Admin\TemaController@listar_temas');
+    Route::get('listar-removidos','Admin\TemaController@listar_removidos');
+
+    Route::get('ativar-tema/{id}','Admin\TemaController@ativar');
   });
 });
