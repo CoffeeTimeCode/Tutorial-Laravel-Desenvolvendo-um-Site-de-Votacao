@@ -18,6 +18,7 @@ Route::get('/', function () {
 //Routes - Todos os Usuários
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/tema/{id}/{slug}','TemaController@show');
 
 //Routes - Todos os Usuários Logados
 Route::middleware(['auth'])->prefix('painel')->group(function(){

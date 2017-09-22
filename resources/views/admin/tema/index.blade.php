@@ -26,6 +26,7 @@
           <td>{!! $value->created_at !!}</td>
           <td>
             @if($titulo!="Listar Removidos")
+              <a href="{!! url('tema/'.$value->id.'/'.$value->slug) !!}" class="btn btn-xs btn-success">Visualizar</a>
               <a href="{!! url('painel/deletar-tema/'.$value->id) !!}" class="btn btn-xs btn-danger">Deletar</a>
             @else
               <a href="{!! url('painel/ativar-tema/'.$value->id) !!}" class="btn btn-xs btn-warning">Ativar</a>
