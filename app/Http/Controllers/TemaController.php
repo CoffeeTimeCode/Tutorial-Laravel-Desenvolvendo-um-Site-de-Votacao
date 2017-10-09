@@ -20,4 +20,16 @@ class TemaController extends Controller
       ->with('opcoes', $opcoes)
       ->with('total', $total);
     }
+
+    public function adicionar_voto(Request $request)
+    {
+      if(is_null($request->input('opcao'))){}
+        else{
+          $opcao = Opcoes::find($request->input('opcao'));
+          $opcao->qtde++;
+          $opcao->save();
+        }
+
+        return back();
+    }
 }
