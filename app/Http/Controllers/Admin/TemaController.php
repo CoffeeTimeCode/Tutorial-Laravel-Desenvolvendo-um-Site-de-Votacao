@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+use Carbon\Carbon;
 
 /**Models**/
 use App\Temas;
@@ -41,6 +42,7 @@ class TemaController extends Controller
     $tema->user_id = Auth::user()->id;
     $tema->titulo = $request->input('titulo');
     $tema->descricao = $request->input('descricao');
+    $tema->duracao = Carbon::parse($request->input('duracao'));
     $tema->slug = $this->criar_slug($request->input('titulo'));
     $tema->save();
 

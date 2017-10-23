@@ -19,6 +19,7 @@ class CreateTemasTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('titulo');
             $table->text('descricao');
+            $table->timestamp('duracao');
             $table->string('slug');
             $table->softDeletes();
             $table->timestamps();
