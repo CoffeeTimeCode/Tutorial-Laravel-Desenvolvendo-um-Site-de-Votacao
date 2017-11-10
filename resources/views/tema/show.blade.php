@@ -16,7 +16,7 @@
                     <div class="panel-body">
                         <p>Selecione um das opções abaixo:</p>
                         <?php foreach ($opcoes as $key => $value): ?>
-                          <p><input type="radio" name="opcao" value="{!! $value->id !!}"> {!! $value->opcao !!} </p>
+                          <p><input type="radio" name="opcao" value="{!! $value->id !!}"> {!! $value->opcao !!} ({!! $value->qtde !!})</p>
                           <?php if ($value->qtde!=0): ?>
                             <div class="progress">
                               <div class="progress-bar" role="progressbar" style="width: {!! round(($value->qtde/$total)*100) !!}%;">

@@ -11,13 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 //Routes - Todos os Usuários
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/tema/{id}/{slug}','TemaController@show');
 Route::post('/tema/{id}/{slug}','TemaController@adicionar_voto');
 

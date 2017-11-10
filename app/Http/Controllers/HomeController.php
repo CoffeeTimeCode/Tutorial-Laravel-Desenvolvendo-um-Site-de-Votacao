@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Carbon\Carbon;
+
+/**Models**/
+use App\Opcoes;
 
 class HomeController extends Controller
 {
@@ -13,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -23,6 +28,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $temas = Opcoes::select(DB::raw('SUM(qtde) as "total", temas.*'))
+        ->join('temas', 'opcoes.tema_id','=', 'temas.id')
+        ->where('duracao','>=', Carbon::now())
+        ->groupBy('tema_id')
+        ->havingRaw('total > 0')
+        ->orderBy('total', 'desc')->get();
+
+        return view('home')->with('temas', $temas);
     }
 }
