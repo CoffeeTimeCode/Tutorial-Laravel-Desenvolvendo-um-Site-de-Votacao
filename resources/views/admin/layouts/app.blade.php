@@ -69,6 +69,10 @@
           <div class="col-md-3">
             <ul class="list-group">
               <li class="list-group-item"><h4 class="text-center">Menu</h4></li>
+              @if(url()->current()!=url('/painel'))
+              <li class="list-group-item"><a href="{!! url('painel') !!}">Painel</a></li>
+              @endif
+              <li class="list-group-item"><a href="{!! url('/') !!}">Voltar Para O Site</a></li>
               <li class="list-group-item"><a href="{!! url('painel/adicionar-tema') !!}">Criar Tema</a></li>
               @if(Auth::user()->level>=0)
                 <li class="list-group-item"><a href="{!! url('painel/meus-temas') !!}">Meus Temas</a></li>

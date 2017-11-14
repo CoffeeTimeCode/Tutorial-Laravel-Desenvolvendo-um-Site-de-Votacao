@@ -19,9 +19,7 @@ Route::post('/tema/{id}/{slug}','TemaController@adicionar_voto');
 
 //Routes - Todos os Usuários Logados
 Route::middleware(['auth'])->prefix('painel')->group(function(){
-  Route::get('/', function () {
-      return view('admin.painel');
-  });
+  Route::get('/', 'Admin\PainelController@index');
 
   Route::get('adicionar-tema','Admin\TemaController@create');
   Route::post('adicionar-tema','Admin\TemaController@store');
